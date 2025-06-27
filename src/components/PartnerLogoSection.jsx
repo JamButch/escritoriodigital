@@ -3,7 +3,7 @@ import React from 'react';
 import saval from '../images/saval-logo-new.png'
 import UdeAysen from '../images/UniversidadAysen.png'
 import Siss from '../images/LogoSiss.png'
-import AguasAndinas from '../images/AguasAndinas.png'
+import AguasAndinas from '../images/aguasAndinas.png'
 
 const PartnerLogosSection = () => {
   const partnerLogos = [
