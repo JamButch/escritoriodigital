@@ -1,99 +1,121 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Documentación del Proyecto Gatsby: EscritorioDigital.cl
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Este documento detalla la configuración, modificación y despliegue del sitio web de EscritorioDigital.cl, construido con Gatsby.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+---
 
-## 🚀 Quick start
+## 🚀 Inicio Rápido
 
-1.  **Create a Gatsby site.**
+Sigue estos pasos para poner en marcha el proyecto de manera local:
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+1.  **Clonar el repositorio.**
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+    ```bash
+    git clone [https://github.com/jambutch/escritoriodigital.cl.git](https://github.com/jambutch/escritoriodigital.cl.git) # [Reemplazar con la URL real del repositorio si es diferente]
+    cd escritoria-digital/
     ```
 
-1.  **Start developing.**
+2.  **Instalar las dependencias.**
+    Una vez dentro del directorio del proyecto, instala las dependencias necesarias:
 
-    Navigate into your new site’s directory and start it up.
+    ```bash
+    npm install
+    # o si usas Yarn
+    # yarn install
+    ```
 
-    ```shell
-    cd my-default-starter/
+3.  **Iniciar el entorno de desarrollo.**
+    Ejecuta el siguiente comando para iniciar el servidor de desarrollo de Gatsby:
+
+    ```bash
     gatsby develop
     ```
+    Tu sitio estará ahora accesible en `http://localhost:8000`. También tendrás acceso a GraphiQL para explorar los datos en `http://localhost:8000/___graphql`.
 
-1.  **Open the source code and start editing!**
+---
 
-    Your site is now running at `http://localhost:8000`!
+## 🛠️ Cómo Modificar el Proyecto
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+Aquí te detallamos cómo puedes modificar los aspectos clave del sitio:
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+### 1. Modificar Contenido de Páginas
 
-## 🚀 Quick start (Netlify)
+El contenido de las páginas principales se encuentra en el directorio `src/pages/`.
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+* **Página de Inicio (`index.js`)**: Modifica el archivo `src/pages/index.js` para cambiar el contenido de la página principal. Puedes editar el texto, añadir o quitar enlaces, o modificar los componentes presentes.
+* **Segunda Página (`page-2.js`)**: El contenido de la segunda página se encuentra en `src/pages/page-2.js`.
+* **Páginas Especiales**:
+    * `using-ssr.js`: Esta página demuestra el renderizado del lado del servidor (SSR) y muestra una imagen aleatoria de perros.
+    * `using-typescript.tsx`: Esta página es un ejemplo de cómo Gatsby soporta TypeScript.
+    * `using-dsg.js`: Esta es una página DSG (Deferred Static Generation) que se crea bajo demanda.
+    * `404.js`: Personaliza esta página en `src/pages/404.js` para el manejo de rutas no encontradas.
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+### 2. Modificar Componentes Reutilizables
 
-## 🧐 What's inside?
+Los componentes de React reutilizables se encuentran en el directorio `src/components/`.
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+* **Layout General (`layout.js`)**: Este componente define la estructura común de todas las páginas, incluyendo el encabezado y el pie de página.
+* **Encabezado (`header.js`)**: Puedes modificar el título del sitio y el logotipo en `src/components/header.js`.
+* **SEO (`seo.js`)**: El componente `seo.js` gestiona los metadatos de la página para SEO.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+### 3. Modificar Estilos
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+Los estilos globales se definen en `src/components/layout.css`, y algunos módulos CSS específicos se encuentran junto a los componentes, como `src/components/index.module.css`.
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+* **Variables CSS**: Las variables CSS principales se definen en `:root` dentro de `layout.css`, permitiendo ajustar colores, espaciados y tipografía de forma centralizada.
+* **Estilos Modulares**: Utiliza archivos `.module.css` para estilos específicos de componentes y evitar conflictos.
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+### 4. Configuración del Sitio
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+El archivo `gatsby-config.js` es central para la configuración del sitio:
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+* **Metadatos**: Modifica `siteMetadata` para cambiar el título, la descripción, el autor y la URL del sitio.
+* **Plugins**: Aquí se configuran los plugins de Gatsby, como los de procesamiento de imágenes (`gatsby-plugin-image`, `gatsby-transformer-sharp`, `gatsby-plugin-sharp`) y el manifiesto (`gatsby-plugin-manifest`).
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+---
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## 📦 Estructura del Proyecto (Archivos Clave)
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+Este es un resumen de los archivos y directorios más relevantes:
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+.
+├── node_modules/         # Dependencias del proyecto
+├── src/                  # Código fuente del sitio
+│   ├── components/       # Componentes de React reutilizables
+│   │   ├── header.js
+│   │   ├── layout.js
+│   │   ├── layout.css
+│   │   ├── index.module.css
+│   │   └── seo.js
+│   ├── images/           # Imágenes del sitio
+│   └── pages/            # Páginas de tu sitio (ej. index.js, page-2.js, 404.js)
+│       ├── 404.js
+│       ├── index.js
+│       ├── page-2.js
+│       ├── using-ssr.js
+│       └── using-typescript.tsx
+├── .gitignore            # Archivos ignorados por Git
+├── gatsby-browser.js     # APIs de navegador de Gatsby
+├── gatsby-config.js      # Configuración principal del sitio
+├── gatsby-node.js        # APIs de Node de Gatsby (para el proceso de construcción)
+├── gatsby-ssr.js         # APIs de renderizado del lado del servidor de Gatsby
+├── LICENSE               # Licencia del proyecto
+├── package.json          # Metadatos y dependencias del proyecto
+├── package-lock.json     # Registro de dependencias exactas
+└── README.md             # Este archivo de documentación
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
 
-## 🎓 Learning Gatsby
+---
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
+## 🚀 Despliegue del Proyecto
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/getting-started/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+Para desplegar el proyecto, primero necesitas construir la versión optimizada:
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+```bash
+gatsby build
 
-## 💫 Deploy
+Esto generará los archivos estáticos en el directorio public/.
 
-[Build, Deploy, and Host On Netlify](https://netlify.com)
+Puedes desplegar este sitio en servicios como Netlify con un solo clic:
 
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+Si necesitas desplegar en otro entorno, deberás subir el contenido del directorio public/ al servidor de tu elección.

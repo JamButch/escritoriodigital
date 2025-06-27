@@ -1,128 +1,83 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React from 'react';
+import Layout from '../components/Layout';
+import HeroSection from '../components/HeroSection';
+import FeatureSection from '../components/FeatureSection';
+import CtaSection from '../components/CtaSection';
+import ProblemSection from '../components/ProblemSection';
+import ContactFormSection from '../components/ContactFormSection';
+import PartnerLogosSection from '../components/PartnerLogoSection';
+import notebook from '../images/notebook-1.png'; 
+import firma from '../images/clavefirmagob.png';
+import mobile from '../images/edmovil.png';
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+// Importa todos los iconos necesarios para las FeatureSections
+import {  PiggyBank, ScanText, CloudCheck, FileSearch, LockIcon, Cog, Users2, Blend, Scale, Landmark, ShieldUserIcon, BanknoteArrowUp, Lightbulb, FolderLock } from 'lucide-react';
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
+const IndexPage = () => {
+  return (
+    <Layout>
+      <HeroSection />
+      <ProblemSection />
+      <CtaSection />
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+      {/* Feature Section 1: Funcionalidades Clave */}
+      <FeatureSection
+      sectionId="caracteristicas"
+        title="Funcionalidades Clave de Escritorio Digital"
+        description="Escritorio Digital ofrece un conjunto robusto de funcionalidades diseñadas para optimizar su gestión documental."
+        features={[
+          { icon: ScanText, text: "Digitalización Inteligente con OCR." },
+          { icon: CloudCheck, text: "Almacenamiento Seguro en la Nube." },
+          { icon: FileSearch, text: "Búsqueda Avanzada de Documentos." },
+          { icon: LockIcon, text: "Seguridad y Control de Acceso."},
+          { icon: Cog, text: "Automatización de Flujos de Trabajo." },
+          {icon: Users2, text: "Herramientas de Colaboración."}
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
-
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
-
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
+        ]}
+        imageSrc={notebook}
+        imageAlt="escritorio digital en un notebook"
+        bgColor="bg-white"
+        reverseLayout={false}
+        iconColorClass="text-indigo-500"
       />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
-)
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Home" />
+      {/* Feature Section 2: Sistema de Gestión Documental */}
+      <FeatureSection
+        title="Escritorio Digital para el Sector Público"
+        description="Las instituciones públicas enfrentan desafíos únicos en la gestión documental, desde la transparencia hasta el cumplimiento normativo. Escritorio Digital está diseñado para apoyar sus objetivos y optimizar tus flujos de trabajo."
+        features={[
+          { icon: Blend, text: "Fomente la Transparencia y el Acceso a la Información Pública." },
+          { icon: Scale, text: "Asegure el Cumplimiento Normativo y la Trazabilidad de Expedientes." },
+          { icon: Landmark, text: "Optimice Procesos Administrativos y Reduzca la Burocracia." },
+          { icon: ShieldUserIcon, text: "Proteja la Información Sensible y Garantice la Seguridad de Datos." }
+        ]}
+        imageSrc={firma}
+        imageAlt="integrables con el gobierno"
+        bgColor="bg-gray-50"
+        reverseLayout={true} // Cambia el orden de la imagen y el texto
+        iconColorClass="text-purple-500"
+      />
 
-export default IndexPage
+      {/* Feature Section 3: Procesamiento de Documentos */}
+      <FeatureSection
+        title="Escritorio Digital para la Empresa Privada"
+        description="En el competitivo mundo empresarial, la eficiencia y el control son clave. Escritorio Digital impulsa la productividad y la rentabilidad de su negocio."
+        features={[
+          { icon: BanknoteArrowUp, text: "Impulse la Agilidad y el Crecimiento Empresarial." },
+          { icon: PiggyBank, text: "Reduzca Costos Operativos y Maximice la Rentabilidad." },
+          { icon: Lightbulb, text: "Fomente la Colaboración y la Innovación en su Equipo." },
+          { icon: FolderLock, text: "Proteja sus Activos de Información y Datos Confidenciales."}
+        ]}
+        imageSrc={mobile}
+        imageAlt="escritorio digital en un móvil"
+        bgColor="bg-white"
+        reverseLayout={false}
+        iconColorClass="text-indigo-500"
+      />
+      <PartnerLogosSection />
+      <ContactFormSection />
+    </Layout>
+  );
+};
+
+export default IndexPage;
