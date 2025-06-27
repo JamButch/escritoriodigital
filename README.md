@@ -1,4 +1,4 @@
-# Documentación del Proyecto Gatsby: EscritorioDigital.cl
+Documentación EscritorioDigital.cl con Gatsby
 
 Este documento detalla la configuración, modificación y despliegue del sitio web de EscritorioDigital.cl, construido con Gatsby.
 
