@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import HeroSection from '../components/HeroSection';
 import FeatureSection from '../components/FeatureSection';
 import CtaSection from '../components/CtaSection';
@@ -22,7 +22,6 @@ const IndexPage = () => {
 
       {/* Feature Section 1: Funcionalidades Clave */}
       <FeatureSection
-      sectionId="caracteristicas"
         title="Funcionalidades Clave de Escritorio Digital"
         description="Escritorio Digital ofrece un conjunto robusto de funcionalidades diseñadas para optimizar su gestión documental."
         features={[
@@ -74,7 +73,7 @@ const IndexPage = () => {
         reverseLayout={false}
         iconColorClass="text-indigo-500"
       />
-      <PartnerLogosSection />
+      
       <ContactFormSection />
     </Layout>
   );

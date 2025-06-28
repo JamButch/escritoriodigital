@@ -11,7 +11,7 @@ const FeatureSection = ({
   bgColor,
   reverseLayout = false, // Prop to toggle image/text order
   iconColorClass,  // Tailwind class for icon color
-  sectionId = 'feature-section', // Default section ID
+  sectionId = 'caracteristicas', // Default section ID
 }) => {
   return (
     <section id={sectionId} className={`py-20 px-4 ${bgColor}`}>
