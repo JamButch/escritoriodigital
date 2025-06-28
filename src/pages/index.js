@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/layout';
 import HeroSection from '../components/HeroSection';
 import FeatureSection from '../components/FeatureSection';
 import CtaSection from '../components/CtaSection';
