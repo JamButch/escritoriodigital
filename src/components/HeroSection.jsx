@@ -1,5 +1,6 @@
 import React from 'react';
 import hero from '../images/hero.png';
+import { Link } from 'gatsby';
 
 const HeroSection = () => {
   return (
@@ -18,12 +19,12 @@ const HeroSection = () => {
           Libera espacio físico, optimiza la gestión documental y potencia la eficiencia de tu equipo con la solución integral de Febos.
         </p>
         <div className="flex flex-col sm:flex-row justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-          <button className="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition duration-300">
+          <Link to="#sector-privado" className="bg-white text-indigo-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition duration-300">
             Sector Privado
-          </button>
-          <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-indigo-600 transition duration-300">
+          </Link>
+          <Link to="#sector-publico" className="border-2 border-white text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-indigo-600 transition duration-300">
             Sector Público
-          </button>
+          </Link>
         </div>
       </div>
 

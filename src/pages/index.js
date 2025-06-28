@@ -40,8 +40,9 @@ const IndexPage = () => {
         iconColorClass="text-indigo-500"
       />
 
-      {/* Feature Section 2: Sistema de Gestión Documental */}
+      {/* Feature Section 2: Sector Público */}
       <FeatureSection
+        sectionId='sector-publico'
         title="Escritorio Digital para el Sector Público"
         description="Las instituciones públicas enfrentan desafíos únicos en la gestión documental, desde la transparencia hasta el cumplimiento normativo. Escritorio Digital está diseñado para apoyar sus objetivos y optimizar tus flujos de trabajo."
         features={[
@@ -57,8 +58,9 @@ const IndexPage = () => {
         iconColorClass="text-purple-500"
       />
 
-      {/* Feature Section 3: Procesamiento de Documentos */}
+      {/* Feature Section 3: Sector Privado */}
       <FeatureSection
+        sectionId='sector-privado'
         title="Escritorio Digital para la Empresa Privada"
         description="En el competitivo mundo empresarial, la eficiencia y el control son clave. Escritorio Digital impulsa la productividad y la rentabilidad de su negocio."
         features={[
