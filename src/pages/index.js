@@ -75,7 +75,7 @@ const IndexPage = () => {
         reverseLayout={false}
         iconColorClass="text-indigo-500"
       />
-      
+      <PartnerLogosSection />
       <ContactFormSection />
     </Layout>
   );

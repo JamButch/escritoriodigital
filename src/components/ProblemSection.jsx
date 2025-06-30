@@ -1,7 +1,6 @@
 import React from 'react';
 // Importa los iconos necesarios de lucide-react para los puntos de dolor
 import { Archive, Search, Users, AlertTriangle} from 'lucide-react';
-import logo from '../images/logo2.png'; // Asegúrate de que la ruta sea correcta
 
 const ProblemSection = () => {
   return (

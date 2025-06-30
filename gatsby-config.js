@@ -1,8 +1,6 @@
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
+// gatsby-config.js
 module.exports = {
-  pathPrefix: "/escritoriodigital", // <-- Añade esta línea (¡ajusta el nombre del repositorio!)
+  // ... tu configuración actual ...
   siteMetadata: {
     title: `Gatsby Default Starter`, // Puedes cambiar esto a `Escritorio Digital`
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
@@ -10,6 +8,7 @@ module.exports = {
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    // ... tus plugins existentes ...
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -31,5 +30,15 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`,
       },
     },
+    {
+      resolve: `gatsby-source-abucms`, // <--- ¡Este es el plugin de AbuCMS!
+      options: {
+        baseUrl: "https://l8jh6zxpq1.execute-api.us-east-1.amazonaws.com/prod", // <--- ¡LA URL CORRECTA AQUÍ!
+        apiBase: "prod", // Generalmente es 'prod' para producción
+        models: ["febos.cl-blog"], // Tus modelos de contenidoç
+        apiKey: "4b84cb862e114d3087dcd9d15374b3f9", // Tu API Key
+        useCache: true,
+      },
+    },
   ],
-}
+};
