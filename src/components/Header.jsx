@@ -3,6 +3,7 @@ import React, { useState } from 'react'; // Importa useState
 // Se eliminan las importaciones directas de las imágenes, se usarán rutas absolutas.
 import Logo1 from '../images/logo1.png';
 import Logo2 from '../images/logo2.png';
+import { Link } from 'gatsby'; // Importa Link de Gatsby para navegación interna
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false); // Estado para controlar la visibilidad del menú móvil
@@ -24,10 +25,11 @@ const Header = () => {
 
         {/* Navigation Menu (Desktop) */}
         <nav className="hidden md:flex space-x-6">
-          <a href="#" className="text-white hover:text-yellow-300 font-medium transition duration-300">Inicio</a>
-          <a href="#caracteristicas" className="text-white hover:text-yellow-300 font-medium transition duration-300">Características</a>
-          <a href="#" className="text-white hover:text-yellow-300 font-medium transition duration-300">Blog</a>
-          <a href="#contacto" className="text-white hover:text-yellow-300 font-medium transition duration-300">Contacto</a>
+          {/* Usar Link para todas las navegaciones internas */}
+          <Link to="/" className="text-white hover:text-yellow-300 font-medium transition duration-300">Inicio</Link>
+          <Link to="/#caracteristicas" className="text-white hover:text-yellow-300 font-medium transition duration-300">Características</Link>
+          <Link to="/blog/" className="text-white hover:text-yellow-300 font-medium transition duration-300">Blog</Link> {/* Ruta correcta a la página de Blog */}
+          <Link to="/#contacto" className="text-white hover:text-yellow-300 font-medium transition duration-300">Contacto</Link>
         </nav>
 
         {/* Call to Action Button (Desktop) */}
