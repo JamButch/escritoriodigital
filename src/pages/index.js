@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby'; // Importa 'graphql' para la Page Query
+import { graphql, Link } from 'gatsby'; // Importa 'graphql' para la Page Query
 
 // Asegúrate que Layout esté importado correctamente (capitalización y extensión)
 import Layout from '../components/Layout.jsx'; // Confirma la capitalización y .jsx
@@ -99,14 +99,9 @@ const IndexPage = ({ data }) => {
                       dangerouslySetInnerHTML={{ __html: post.resumen.html }} 
                     />
                   )}
-                  
-                  {/* Muestra el contenido HTML */}
-                  {post.contenido && post.contenido.html && (
-                    <div 
-                      className="text-gray-700 text-base" 
-                      dangerouslySetInnerHTML={{ __html: post.contenido.html }} 
-                    />
-                  )}
+                  <Link to={`/blog/${post.slug}`} className="text-indigo-600 font-bold hover:underline">
+                    Leer más
+                  </Link>
                 </div>
               ))}
             </div>
