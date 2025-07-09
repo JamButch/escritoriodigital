@@ -1,19 +1,25 @@
 import React from 'react';
-import Layout from '../components/Layout';
+import { graphql } from 'gatsby'; // Importa 'graphql' para la Page Query
+
+// Asegúrate que Layout esté importado correctamente (capitalización y extensión)
+import Layout from '../components/Layout.jsx'; // Confirma la capitalización y .jsx
 import HeroSection from '../components/HeroSection';
 import FeatureSection from '../components/FeatureSection';
 import CtaSection from '../components/CtaSection';
 import ProblemSection from '../components/ProblemSection';
 import ContactFormSection from '../components/ContactFormSection';
 import PartnerLogosSection from '../components/PartnerLogoSection';
-import notebook from '../images/notebook-1.png'; 
+import notebook from '../images/notebook-1.png';
 import firma from '../images/clavefirmagob.png';
 import mobile from '../images/edmovil.png';
 
 // Importa todos los iconos necesarios para las FeatureSections
-import {  PiggyBank, ScanText, CloudCheck, FileSearch, LockIcon, Cog, Users2, Blend, Scale, Landmark, ShieldUserIcon, BanknoteArrowUp, Lightbulb, FolderLock } from 'lucide-react';
+import { PiggyBank, ScanText, CloudCheck, FileSearch, LockIcon, Cog, Users2, Blend, Scale, Landmark, ShieldUserIcon, BanknoteArrowUp, Lightbulb, FolderLock } from 'lucide-react';
 
-const IndexPage = () => {
+// El componente de página ahora recibe 'data' como prop
+const IndexPage = ({ data }) => {
+  const posts = data.allAbuCmsFebosClBlog.nodes; // Accede a tus posts
+
   return (
     <Layout>
       <HeroSection />
@@ -31,7 +37,6 @@ const IndexPage = () => {
           { icon: LockIcon, text: "Seguridad y Control de Acceso."},
           { icon: Cog, text: "Automatización de Flujos de Trabajo." },
           {icon: Users2, text: "Herramientas de Colaboración."}
-
         ]}
         imageSrc={notebook}
         imageAlt="escritorio digital en un notebook"
@@ -54,7 +59,7 @@ const IndexPage = () => {
         imageSrc={firma}
         imageAlt="integrables con el gobierno"
         bgColor="bg-gray-50"
-        reverseLayout={true} // Cambia el orden de la imagen y el texto
+        reverseLayout={true}
         iconColorClass="text-purple-500"
       />
 
@@ -75,10 +80,66 @@ const IndexPage = () => {
         reverseLayout={false}
         iconColorClass="text-indigo-500"
       />
-      <PartnerLogosSection />
+
+      {/* SECCIÓN DE BLOG POSTS */}
+      <section className="py-20 px-4 bg-gray-100">
+        <div className="container mx-auto text-center">
+          <h2 className="text-4xl font-bold text-gray-900 mb-8">Nuestros Últimos Posts</h2>
+          {posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {posts.map(post => (
+                <div key={post.id} className="bg-white p-6 rounded-lg shadow-md text-left">
+                  <h3 className="text-xl font-semibold text-indigo-700 mb-2">{post.titulo || post.name}</h3>
+                  <p className="text-sm text-gray-500 mb-2">Fecha: {post.fecha}</p>
+                  
+                  {/* Muestra el resumen HTML */}
+                  {post.resumen && post.resumen.html && (
+                    <div 
+                      className="text-gray-600 mb-4" 
+                      dangerouslySetInnerHTML={{ __html: post.resumen.html }} 
+                    />
+                  )}
+                  
+                  {/* Muestra el contenido HTML */}
+                  {post.contenido && post.contenido.html && (
+                    <div 
+                      className="text-gray-700 text-base" 
+                      dangerouslySetInnerHTML={{ __html: post.contenido.html }} 
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-600">No hay posts disponibles en este momento.</p>
+          )}
+        </div>
+      </section>
+
       <ContactFormSection />
     </Layout>
   );
 };
 
 export default IndexPage;
+
+// <--- Esta es la Page Query de GraphQL - ¡FORMATO LIMPIO Y CORRECTO! --->
+export const query = graphql`
+  query MyAbuCMSData {
+    allAbuCmsFebosClBlog (
+      sort: {fecha: DESC} # <--- Ordena por fecha descendente
+      limit: 3 # <--- Limita a 3 posts (o el número que quieras)
+    ) {
+      nodes {
+        name
+        fecha
+        titulo
+        resumen {
+          type
+          html
+        }
+        slug # <--- Asegúrate de pedir el 'slug' para los enlaces
+      }
+    }
+  }
+`;

@@ -31,12 +31,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-abucms`, // <--- ¡Este es el plugin de AbuCMS!
+      resolve: `gatsby-source-abucms`,
       options: {
-        baseUrl: "https://l8jh6zxpq1.execute-api.us-east-1.amazonaws.com/prod", // <--- ¡LA URL CORRECTA AQUÍ!
-        apiBase: "prod", // Generalmente es 'prod' para producción
-        models: ["febos.cl-blog"], // Tus modelos de contenidoç
-        apiKey: "4b84cb862e114d3087dcd9d15374b3f9", // Tu API Key
+        baseUrl: "https://l8jh6zxpq1.execute-api.us-east-1.amazonaws.com",
+        apiBase: "prod",
+        models: ["febos_cl_blog"],
+        apiKey: "559f3568887247778e89ca151f8fccfb",
         useCache: true,
       },
     },
